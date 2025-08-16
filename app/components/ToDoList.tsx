@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import TodoItem from "./ToDoItem";
+import TodoItem from "./TodoItem";
 import type { Todo } from "@prisma/client";
 
 type TodoListProps = {

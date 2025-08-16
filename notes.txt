@@ -12,5 +12,17 @@ Need to:
 -Add late effect for due date font (once it turns late, font goes red) - maybe a react hook
 
 Further steps:
--refactor for modularity
--sort itemlist by dueDate
+-[done!] refactor for modularity
+-[done!] sort itemlist by dueDate
+-[done!] number of days until / past todo (only display on hover)
+-allow users to edit due date after creating todo
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+Part 2: Image Generation
+When a todo is created, search for and display a relevant image to visualize the task to be done.
+
+To do this, make a request to the Pexels API using the task description as a search query. Display the returned image to the user within the appropriate todo item. While the image is being loaded, indicate a loading state.
+
+You will need to sign up for a free Pexels API key to make the fetch request.
+-------------------------------------------------------------------------------------------------------------------------------------------
+What I have:
