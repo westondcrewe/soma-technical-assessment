@@ -1,0 +1,12 @@
+Part 1: Due Dates
+When a new task is created, users should be able to set a due date.
+
+When showing the task list is shown, it must display the due date, and if the date is past the current time, the due date should be in red.
+-------------------------------------------------------------------------------------------------------------------------------------------
+What I have:
+-calendar on todo creation component for due date setting
+Need to:
+-Add "due_date" field to table schema - what type? string? datetime? figure out. probably datetime bc createdAt field is datetime. also, make it dueDate, snake not camel it seems is standard
+-Connect todo creation component calendar input to database - route POST method handling, handleAddTodo
+-Add due date as text on todo component - maybe add a countdown beneath (3 weeks, 4 days)
+-Add late effect for due date font (once it turns late, font goes red) - maybe a react hook

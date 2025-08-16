@@ -10,19 +10,22 @@ export async function GET() {
     });
     return NextResponse.json(todos);
   } catch (error) {
+    console.error('GET error:', error)
     return NextResponse.json({ error: 'Error fetching todos' }, { status: 500 });
   }
 }
 
 export async function POST(request: Request) {
   try {
-    const { title } = await request.json();
+    // add dueDate to POST method along with title input
+    const { title, dueDate } = await request.json();
     if (!title || title.trim() === '') {
       return NextResponse.json({ error: 'Title is required' }, { status: 400 });
     }
     const todo = await prisma.todo.create({
       data: {
         title,
+        dueDate: typeof dueDate === 'string' && dueDate.trim() !== '' ? new Date(dueDate) : null // dueDate is an optional field
       },
     });
     return NextResponse.json(todo, { status: 201 });
