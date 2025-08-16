@@ -2,6 +2,7 @@
 import type { Todo } from '@prisma/client';
 import { useState, useEffect } from 'react';
 import TodoItem from './components/ToDoItem';
+import TodoList from './components/ToDoList';
 
 export default function Home() {
   const [newTodo, setNewTodo] = useState('');
@@ -52,10 +53,14 @@ export default function Home() {
   };
 
   return (
+    // background
     <div className="min-h-screen bg-gradient-to-b from-orange-500 to-red-500 flex flex-col items-center p-4">
+      {/*  */}
       <div className="w-full max-w-md">
+        {/* title */}
         <h1 className="text-4xl font-bold text-center text-white mb-8">Things To Do App</h1>
         <div className="flex mb-6">
+          {/* new todo input field */}
           <input
             type="text"
             id="todo-title"
@@ -82,16 +87,8 @@ export default function Home() {
             Add
           </button>
         </div>
-        <ul>
-          {todos.map((todo:Todo) => (
-            <TodoItem
-              key={todo.id}
-              id={todo.id}
-              title={todo.title}
-              dueDate={todo.dueDate}
-              onDelete={handleDeleteTodo}
-            />))}
-        </ul>
+        {/* todo list */}
+        <TodoList todos={todos} onDelete={handleDeleteTodo}/>
       </div>
     </div>
   );

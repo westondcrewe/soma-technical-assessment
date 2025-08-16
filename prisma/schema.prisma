@@ -12,4 +12,6 @@ model Todo {
   title     String
   createdAt DateTime  @default(now())
   dueDate   DateTime?
+
+  @@index([dueDate, createdAt]) // fast sorting on ItemList using index
 }

@@ -10,3 +10,7 @@ Need to:
 -Connect todo creation component calendar input to database - route POST method handling, handleAddTodo
 -Add due date as text on todo component - maybe add a countdown beneath (3 weeks, 4 days)
 -Add late effect for due date font (once it turns late, font goes red) - maybe a react hook
+
+Further steps:
+-refactor for modularity
+-sort itemlist by dueDate

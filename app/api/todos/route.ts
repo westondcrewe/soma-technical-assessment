@@ -4,10 +4,10 @@ import { prisma } from '@/lib/prisma';
 export async function GET() {
   try {
     const todos = await prisma.todo.findMany({
-      orderBy: {
-        createdAt: 'desc',
-      },
-    });
+      orderBy: [ // sort by duedate then createdAt for ties
+      { dueDate: {sort: 'asc', nulls: 'last'}},
+      { createdAt: 'desc' },
+    ]});
     return NextResponse.json(todos);
   } catch (error) {
     console.error('GET error:', error)
