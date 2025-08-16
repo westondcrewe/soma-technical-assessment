@@ -25,7 +25,9 @@ export async function POST(request: Request) {
     const todo = await prisma.todo.create({
       data: {
         title,
-        dueDate: typeof dueDate === 'string' && dueDate.trim() !== '' ? new Date(dueDate) : null // dueDate is an optional field
+        dueDate: typeof dueDate === 'string' && dueDate.trim() !== '' 
+          ? new Date(dueDate + 'T00:00') // ensure date is as selected on calendar, do not allow JS to mess it up
+          : null // dueDate is an optional field
       },
     });
     return NextResponse.json(todo, { status: 201 });

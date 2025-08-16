@@ -1,12 +1,12 @@
-"use client"
-import type { Todo } from '@prisma/client';
-import { useState, useEffect } from 'react';
-import TodoItem from './components/ToDoItem';
-import TodoList from './components/ToDoList';
+"use client";
+import type { Todo } from "@prisma/client";
+import { useState, useEffect } from "react";
+import TodoItem from "./components/ToDoItem";
+import TodoList from "./components/ToDoList";
 
 export default function Home() {
-  const [newTodo, setNewTodo] = useState('');
-  const [dueDate, setDueDate] = useState(''); // add state for new dueDate field
+  const [newTodo, setNewTodo] = useState("");
+  const [dueDate, setDueDate] = useState(""); // add state for new dueDate field
   const [todos, setTodos] = useState([]);
 
   useEffect(() => {
@@ -15,40 +15,40 @@ export default function Home() {
 
   const fetchTodos = async () => {
     try {
-      const res = await fetch('/api/todos');
+      const res = await fetch("/api/todos");
       const data = await res.json();
       setTodos(data);
     } catch (error) {
-      console.error('Failed to fetch todos:', error);
+      console.error("Failed to fetch todos:", error);
     }
   };
 
   const handleAddTodo = async () => {
-    console.log("Click add")
+    console.log("Click add");
     if (!newTodo.trim()) return;
     try {
-      await fetch('/api/todos', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      await fetch("/api/todos", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ title: newTodo, dueDate: dueDate }),
       });
-      console.log('Sending POST body:', { title: newTodo, dueDate: dueDate });
-      setNewTodo('');
-      setDueDate('');
+      console.log("Sending POST body:", { title: newTodo, dueDate: dueDate });
+      setNewTodo("");
+      setDueDate("");
       fetchTodos();
     } catch (error) {
-      console.error('Failed to add todo:', error);
+      console.error("Failed to add todo:", error);
     }
   };
 
-  const handleDeleteTodo = async (id:any) => {
+  const handleDeleteTodo = async (id: any) => {
     try {
       await fetch(`/api/todos/${id}`, {
-        method: 'DELETE',
+        method: "DELETE",
       });
       fetchTodos();
     } catch (error) {
-      console.error('Failed to delete todo:', error);
+      console.error("Failed to delete todo:", error);
     }
   };
 
@@ -58,7 +58,9 @@ export default function Home() {
       {/*  */}
       <div className="w-full max-w-md">
         {/* title */}
-        <h1 className="text-4xl font-bold text-center text-white mb-8">Things To Do App</h1>
+        <h1 className="text-4xl font-bold text-center text-white mb-8">
+          Things To Do App
+        </h1>
         <div className="flex mb-6">
           {/* new todo input field */}
           <input
@@ -69,11 +71,10 @@ export default function Home() {
             placeholder="Add a new todo"
             value={newTodo}
             onChange={(e) => setNewTodo(e.target.value)}
-          
           />
           {/* Due Date Calendar */}
-          <input 
-            type="date" 
+          <input
+            type="date"
             id="todo-due-date"
             name="todoDueDate"
             value={dueDate}
@@ -88,7 +89,7 @@ export default function Home() {
           </button>
         </div>
         {/* todo list */}
-        <TodoList todos={todos} onDelete={handleDeleteTodo}/>
+        <TodoList todos={todos} onDelete={handleDeleteTodo} />
       </div>
     </div>
   );
