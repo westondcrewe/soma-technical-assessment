@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import LoadingSpinner from "./LoadingSpinner";
-import { fetchPexelsImage } from "@/lib/pexels";
 
 type TodoImageProps = {
   id: number;
@@ -17,8 +16,10 @@ export default function TodoImage({ id, title }: TodoImageProps) {
     const loadImage = async () => {
       try {
         setLoading(true);
-        const url = await fetchPexelsImage(id, title);
-        setImageUrl(url);
+        const res = await fetch(`/api/todos/${id}/image`);
+        console.log(res)
+        const data = await res.json();
+        setImageUrl(data.imageURL);
       } catch (err) {
         console.error("Failed to load image:", err);
       } finally {

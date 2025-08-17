@@ -22,7 +22,7 @@ export default function TodoItem({
     <li className="flex items-center bg-white bg-opacity-90 p-4 mb-4 rounded-lg shadow-lg group w-full max-w-3xl">
       {/* left - image */}
       <div className="flex-shrink-0 w-24 h-20 mr-4">
-        <TodoImage title={title} />
+        <TodoImage id={id} title={title} />
       </div>
 
       {/* middle - text - title & due date with hover displays */}
