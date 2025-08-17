@@ -2,45 +2,37 @@
 
 import { useEffect, useState } from "react";
 import LoadingSpinner from "./LoadingSpinner";
+import { fetchPexelsImage } from "@/lib/pexels";
 
 type TodoImageProps = {
+  id: number;
   title: string;
 };
 
-export default function TodoImage({ title }: TodoImageProps) {
-  const [imageUrl, setImageUrl] = useState<string | null>(null); // response from PexelAPI search query 
-  const [loading, setLoading] = useState(true); // while searching + loading
+export default function TodoImage({ id, title }: TodoImageProps) {
+  const [imageUrl, setImageUrl] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchImage = async () => {
+    const loadImage = async () => {
       try {
         setLoading(true);
-        const res = await fetch(
-          `https://api.pexels.com/v1/search?query=${encodeURIComponent(
-            title
-          )}&per_page=1`, // search API with title, only grab 1 page because we only need 1 image
-          {
-            headers: {
-              Authorization: process.env.NEXT_PUBLIC_PEXELS_API_KEY as string,
-            },
-          }
-        );
-        const data = await res.json();
-        setImageUrl(data.photos?.[0]?.src?.medium ?? null); // format for consistent image size
+        const url = await fetchPexelsImage(id, title);
+        setImageUrl(url);
       } catch (err) {
-        console.error("Failed to fetch image:", err);
+        console.error("Failed to load image:", err);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchImage();
-  }, [title]);
+    loadImage();
+  }, [id, title]);
 
   return (
-    <div className="w-full h-full rounded-md overflow-hidden flex items-center justify-center bg-gray-100">
+    <div className="w-24 h-20 flex-shrink-0 rounded-md overflow-hidden flex items-center justify-center bg-gray-100">
       {loading ? (
-        <LoadingSpinner /> 
+        <LoadingSpinner />
       ) : imageUrl ? (
         <img
           src={imageUrl}

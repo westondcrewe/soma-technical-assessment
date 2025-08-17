@@ -33,5 +33,18 @@ create pexel api utility to handle API queries
 ensure each todo searches for image based on title text
 add image to todoitem component
 Next stpes:
-refactor i suppose
-i think image size handling is good but monitor for errors
+[Done] refactor i suppose
+[Done] i think image size handling is good but monitor for errors
+Maybe store imageURL in database so that I don't repeat unnecessary API requests
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+Part 3: Task Dependencies
+Implement a task dependency system that allows tasks to depend on other tasks. The system must:
+
+Allow tasks to have multiple dependencies
+Prevent circular dependencies
+Show the critical path
+Calculate the earliest possible start date for each task based on its dependencies
+Visualize the dependency graph
+-------------------------------------------------------------------------------------------------------------------------------------------
+We're really cookin with grease here, baby!
