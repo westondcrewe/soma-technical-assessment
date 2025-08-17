@@ -26,7 +26,7 @@ export default function TodoDueDate({ dueDate }: TodoDueDateProps) {
       <span className={`block text-sm mt-1 ${isOverdue ? 'text-red-500' : 'text-gray-400'}`}>
         Due {due.toLocaleDateString()}
       </span>
-      <span className={`absolute right-0 top-0 hidden group-hover:block text-sm ${isOverdue ? 'text-red-500' : 'text-gray-400'} font-semibold`}>
+      <span className={`absolute right-2 hidden group-hover:block text-sm ${isOverdue ? 'text-red-500' : 'text-gray-400'} font-semibold`}>
         {dueText}
       </span>
     </div>

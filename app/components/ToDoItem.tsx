@@ -1,8 +1,11 @@
-'use client';
-import React from 'react';
-import DeleteButton from './DeleteButton';
-import TodoTitle from './TodoTitle';
-import TodoDueDate from './TodoDueDate';
+"use client";
+
+import { useEffect, useState } from "react";
+import TodoTitle from "./TodoTitle";
+import TodoDueDate from "./TodoDueDate";
+import DeleteButton from "./DeleteButton";
+import TodoImage from "./TodoImage";
+import { fetchPexelsImage } from "@/lib/pexels";
 
 type TodoItemProps = {
   id: number;
@@ -11,10 +14,16 @@ type TodoItemProps = {
   onDelete: (id: number) => void;
 };
 
-export default function TodoItem({ id, title, dueDate, onDelete }: TodoItemProps) {
+export default function TodoItem({
+  id,
+  title,
+  dueDate,
+  onDelete,
+}: TodoItemProps) {
   return (
-    <li className="relative flex justify-between items-start bg-white bg-opacity-90 p-4 mb-4 rounded-lg shadow-lg group">
-      <div className="flex-1 relative">
+    <li className="flex items-center bg-white bg-opacity-90 p-4 mb-4 rounded-lg shadow-lg group w-full max-w-3xl">
+      <TodoImage title={title} />
+      <div className="flex-1 ">
         <TodoTitle title={title} />
         <TodoDueDate dueDate={dueDate} />
       </div>

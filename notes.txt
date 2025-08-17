@@ -26,3 +26,9 @@ To do this, make a request to the Pexels API using the task description as a sea
 You will need to sign up for a free Pexels API key to make the fetch request.
 -------------------------------------------------------------------------------------------------------------------------------------------
 What I have:
+Todos with title
+pexel api - 200/hr = rate limit
+Need to:
+create pexel api utility to handle API queries
+ensure each todo searches for image based on title text
+add image to todoitem component
