@@ -32,3 +32,6 @@ Need to:
 create pexel api utility to handle API queries
 ensure each todo searches for image based on title text
 add image to todoitem component
+Next stpes:
+refactor i suppose
+i think image size handling is good but monitor for errors
