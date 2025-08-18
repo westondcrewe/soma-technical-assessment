@@ -10,10 +10,10 @@ type TodoImageProps = {
 
 export default function TodoImage({ id, title }: TodoImageProps) {
   const [imageUrl, setImageUrl] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true); // loading new images during Pexel API search
 
   useEffect(() => {
-    if (!id) return;
+    if (!id) return; // delete button deletes data from storage thus removing image from display
 
     const loadImage = async () => {
       try {

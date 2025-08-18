@@ -8,11 +8,13 @@ datasource db {
 }
 
 model Todo {
-  id        Int      @id @default(autoincrement())
-  title     String
-  createdAt DateTime  @default(now())
-  dueDate   DateTime?
-  imageURL  String?
+  id           Int      @id @default(autoincrement())
+  title        String
+  createdAt    DateTime  @default(now())
+  dueDate      DateTime?
+  imageURL     String?
+  dependencies Todo[] @relation("TaskDependencies") // self-referencing many-to-many relationship
+  dependents   Todo[] @relation("TaskDependencies")
 
   @@index([dueDate, createdAt]) // fast sorting on ItemList using index
 }

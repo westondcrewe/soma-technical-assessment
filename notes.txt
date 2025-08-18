@@ -48,3 +48,5 @@ Calculate the earliest possible start date for each task based on its dependenci
 Visualize the dependency graph
 -------------------------------------------------------------------------------------------------------------------------------------------
 We're really cookin with grease here, baby!
+
+Change prisma schema for bidirectional linking: dependencies and dependents

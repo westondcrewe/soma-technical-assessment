@@ -1,7 +1,7 @@
 "use client";
 // import type { Todo } from "@prisma/client";
 import { useState, useEffect } from "react";
-import TodoList from "./components/TodoList";
+import TodoList from "./components/Todo/TodoList";
 
 export default function Home() {
   const [newTodo, setNewTodo] = useState("");

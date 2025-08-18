@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { fetchPexelsImageFromAPI } from "@/lib/pexels";
 
-// GET request for image corresponding to Todo item with given ID 
+// GET request for image corresponding to Todo item with given ID
 // First checks for stored imageURL in database, return URL if cached
 // otherwise requests then returns URL from Pexel API and stores URL in database
 export async function GET(
